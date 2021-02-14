@@ -3,6 +3,8 @@
 nvim ports of [tabline.vim](https://github.com/mkitt/tabline.vim), written in Lua.
 It is basically a drop-in replacement but with [some differences](#Differences).
 
+![nvim-tabline-screenshots](screenshots/nvim-tabline.png)
+
 ## Installation
 
 With vim-plug:
