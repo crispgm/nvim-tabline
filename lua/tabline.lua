@@ -1,3 +1,6 @@
+-- nvim-tabline
+-- David Zhang <https://github.com/crispgm>
+
 local M = {}
 local fn = vim.fn
 
