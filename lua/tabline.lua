@@ -2,12 +2,12 @@ local M = {}
 local fn = vim.fn
 
 M.options = {
-    index = true,
-    show_modify = false,
+    show_index = true,
+    show_modify = true,
     no_name = '[No Name]'
 }
 
-function M.tabline()
+local function tabline(options)
     local s = ''
     for index = 1, fn.tabpagenr('$') do
         local winnr = fn.tabpagewinnr(index)
@@ -23,22 +23,21 @@ function M.tabline()
             s = s .. '%#TabLine#'
         end
         s = s .. ' '
-        if M.options.index then
+        if options.show_index then
             s = s .. index .. ':'
         end
 
         if bufname ~= '' then
             s = s .. '[' .. fn.fnamemodify(bufname, ':t') .. '] '
         else
-            s = s .. M.options.no_name .. ' '
+            s = s .. options.no_name .. ' '
         end
-        if M.options.show_modify and bufmodified then
+        if options.show_modify and bufmodified == 1 then
             s = s .. '[+] '
         end
     end
 
     s = s .. '%#TabLineFill#'
-    print(s)
 
     return s
 end
@@ -46,8 +45,12 @@ end
 function M.setup(user_options)
     M.options = vim.tbl_extend('force', M.options, user_options)
 
+    function _G.nvim_tabline()
+        return tabline(M.options)
+    end
+
     vim.o.showtabline = 2
-    vim.o.tabline = [[%!luaeval('require("tabline").tabline()')]]
+    vim.o.tabline = "%!v:lua.nvim_tabline()"
 end
 
 return M
