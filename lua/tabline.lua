@@ -25,23 +25,24 @@ local function tabline(options)
         else
             s = s .. '%#TabLine#'
         end
+        -- tab index
         s = s .. ' '
         if options.show_index then
             s = s .. index .. ':'
         end
-
+        -- buf name
         if bufname ~= '' then
             s = s .. '[' .. fn.fnamemodify(bufname, ':t') .. '] '
         else
             s = s .. options.no_name .. ' '
         end
+        -- modification indicator
         if options.show_modify and bufmodified == 1 then
             s = s .. '[+] '
         end
     end
 
     s = s .. '%#TabLineFill#'
-
     return s
 end
 
