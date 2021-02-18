@@ -31,7 +31,7 @@ require'tabline'.setup{
 
 ### Highlights
 
-The highlights support is a drop-in feature from `tabline.vim`.
+The highlighting of the tab pages line follows vim settings. See `:help setting-tabline` for details.
 
 ### Differences
 
