@@ -29,6 +29,11 @@ require'tabline'.setup{
 }
 ```
 
+### Mappings
+
+Vim's tabpage commands are powerful enough, `:help tabpage` for details.
+If you need switch between tabs, [here is a great tutorial](https://superuser.com/questions/410982/in-vim-how-can-i-quickly-switch-between-tabs).
+
 ### Highlights
 
 The highlighting of the tab pages line follows vim settings. See `:help setting-tabline` for details.
