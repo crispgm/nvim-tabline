@@ -7,7 +7,8 @@ local fn = vim.fn
 M.options = {
     show_index = true,
     show_modify = true,
-    no_name = '[No Name]'
+    modify_indicator = '[+]',
+    no_name = '[No Name]',
 }
 
 local function tabline(options)
@@ -17,7 +18,7 @@ local function tabline(options)
         local buflist = fn.tabpagebuflist(index)
         local bufnr = buflist[winnr]
         local bufname = fn.bufname(bufnr)
-        local bufmodified = fn.getbufvar(bufnr, "&mod")
+        local bufmodified = fn.getbufvar(bufnr, '&mod')
 
         s = s .. '%' .. index .. 'T'
         if index == fn.tabpagenr() then
@@ -27,6 +28,7 @@ local function tabline(options)
         end
         -- tab index
         s = s .. ' '
+        -- index
         if options.show_index then
             s = s .. index .. ':'
         end
@@ -36,9 +38,13 @@ local function tabline(options)
         else
             s = s .. options.no_name .. ' '
         end
-        -- modification indicator
-        if options.show_modify and bufmodified == 1 then
-            s = s .. '[+] '
+        -- modify indicator
+        if
+            bufmodified == 1
+            and options.show_modify
+            and options.modify_indicator ~= nil
+        then
+            s = s .. options.modify_indicator .. ' '
         end
     end
 
@@ -54,7 +60,7 @@ function M.setup(user_options)
     end
 
     vim.o.showtabline = 2
-    vim.o.tabline = "%!v:lua.nvim_tabline()"
+    vim.o.tabline = '%!v:lua.nvim_tabline()'
 
     vim.g.loaded_nvim_tabline = 1
 end

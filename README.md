@@ -16,17 +16,17 @@ Plug 'crispgm/nvim-tabline'
 ## Configuration
 
 ```lua
-require'tabline'.setup{}
+require('tabline').setup({})
 ```
 
 ### Defaults
 
 ```lua
-require'tabline'.setup{
+require('tabline').setup({
     show_index = true,    -- show tab index
     show_modify = true,   -- show buffer modification indicator
     no_name = '[No name]' -- no name buffer name
-}
+})
 ```
 
 ### Mappings
@@ -43,5 +43,5 @@ The highlighting of the tab pages line follows vim settings. See `:help setting-
 nvim-tabline is not exactly a Lua translation. There are some differences for configuration:
 
 - Control whether to display tab number (`show_index`) and buffer modification indicator (`show_modify`)
-- Specify no name buffer name
+- Customize modify indicator and no name buffer name
 - Close button (`g:tablineclosebutton`) is not supported
