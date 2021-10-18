@@ -13,6 +13,17 @@ With vim-plug:
 Plug 'crispgm/nvim-tabline'
 ```
 
+With packer.nvim:
+
+```lua
+use({
+    'crispgm/nvim-tabline',
+    config = function()
+        require('tabline').setup({})
+    end,
+})
+```
+
 ## Configuration
 
 ```lua
@@ -23,9 +34,10 @@ require('tabline').setup({})
 
 ```lua
 require('tabline').setup({
-    show_index = true,    -- show tab index
-    show_modify = true,   -- show buffer modification indicator
-    no_name = '[No name]' -- no name buffer name
+    show_index = true,        -- show tab index
+    show_modify = true,       -- show buffer modification indicator
+    modify_indicator = '[+]', -- modify indicator
+    no_name = '[No name]',    -- no name buffer name
 })
 ```
 
