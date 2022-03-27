@@ -5,8 +5,9 @@ local M = {}
 local fn = vim.fn
 
 M.options = {
-    show_index = true,
+    show_index = false,
     show_modify = true,
+	bracket_in_name = false,
     modify_indicator = '[+]',
     no_name = '[No Name]',
 }
@@ -34,7 +35,11 @@ local function tabline(options)
         end
         -- buf name
         if bufname ~= '' then
-            s = s .. '[' .. fn.fnamemodify(bufname, ':t') .. '] '
+			if options.bracket_in_name == true then
+				s = s .. '[' .. fn.fnamemodify(bufname, ':t') .. '] '
+			else
+				s = s .. '' .. fn.fnamemodify(bufname, ':t') .. ' '
+			end
         else
             s = s .. options.no_name .. ' '
         end
