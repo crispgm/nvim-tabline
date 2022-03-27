@@ -5,9 +5,9 @@ local M = {}
 local fn = vim.fn
 
 M.options = {
-    show_index = false,
+    show_index = true,
     show_modify = true,
-	bracket_in_name = false,
+    bracket_in_name = true,
     modify_indicator = '[+]',
     no_name = '[No Name]',
 }
