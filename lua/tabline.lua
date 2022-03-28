@@ -8,6 +8,7 @@ M.options = {
     show_index = true,
     show_modify = true,
     bracket_character = true,
+    hide_single_buffer = false,
     modify_indicator = '[+]',
     no_name = '[No Name]',
 }
@@ -64,7 +65,13 @@ function M.setup(user_options)
         return tabline(M.options)
     end
 
-    vim.o.showtabline = 2
+    local showtabline = 2
+
+    if M.options.hide_single_buffer == true  then
+	showtabline = 1
+    end
+
+    vim.o.showtabline = showtabline
     vim.o.tabline = '%!v:lua.nvim_tabline()'
 
     vim.g.loaded_nvim_tabline = 1
