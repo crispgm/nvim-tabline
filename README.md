@@ -34,11 +34,12 @@ require('tabline').setup({})
 
 ```lua
 require('tabline').setup({
-    show_index = true,        -- show tab index
-    show_modify = true,       -- show buffer modification indicator
-    bracket_character = true, -- show brackets in name
-    modify_indicator = '[+]', -- modify indicator
-    no_name = '[No name]',    -- no name buffer name
+    show_index = true,         -- show tab index
+    show_modify = true,        -- show buffer modification indicator
+    bracket_character = true,  -- show brackets in name
+    hide_single_buffer = false,-- hide tabline when there's only one buffer
+    modify_indicator = '[+]',  -- modify indicator
+    no_name = '[No name]',     -- no name buffer name
 })
 ```
 
