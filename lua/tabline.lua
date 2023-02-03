@@ -7,8 +7,10 @@ local fn = vim.fn
 M.options = {
     show_index = true,
     show_modify = true,
+    show_icon = false,
+    brackets = { '[', ']' },
+    no_name = 'No Name',
     modify_indicator = '[+]',
-    no_name = '[No Name]',
 }
 
 local function tabline(options)
@@ -32,12 +34,20 @@ local function tabline(options)
         if options.show_index then
             s = s .. index .. ':'
         end
-        -- buf name
-        if bufname ~= '' then
-            s = s .. '[' .. fn.fnamemodify(bufname, ':t') .. '] '
-        else
-            s = s .. options.no_name .. ' '
+        -- icon
+        local icon = ''
+        if options.show_icon and M.has_devicons then
+            local ext = fn.fnamemodify(bufname, ':e')
+            icon = M.devicons.get_icon(bufname, ext, { default = true }) .. ' '
         end
+        -- buf name
+        s = s .. options.brackets[1]
+        if bufname ~= '' then
+            s = s .. icon .. fn.fnamemodify(bufname, ':t')
+        else
+            s = s .. options.no_name
+        end
+        s = s .. options.brackets[2] .. ' '
         -- modify indicator
         if
             bufmodified == 1
@@ -54,6 +64,7 @@ end
 
 function M.setup(user_options)
     M.options = vim.tbl_extend('force', M.options, user_options)
+    M.has_devicons, M.devicons = pcall(require, 'nvim-web-devicons')
 
     function _G.nvim_tabline()
         return tabline(M.options)
