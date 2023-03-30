@@ -3,12 +3,14 @@
 
 local M = {}
 local fn = vim.fn
+local a = vim.api
 
 M.options = {
     show_index = true,
     show_modify = true,
     show_icon = false,
     fnamemodify = ':t',
+    hide_if_only_tab = false,
     brackets = { '[', ']' },
     no_name = 'No Name',
     modify_indicator = ' [+]',
@@ -17,7 +19,8 @@ M.options = {
 
 local function tabline(options)
     local s = ''
-    for index = 1, fn.tabpagenr('$') do
+    local total = fn.tabpagenr('$')
+    for index = 1, total do
         local winnr = fn.tabpagewinnr(index)
         local buflist = fn.tabpagebuflist(index)
         local bufnr = buflist[winnr]
@@ -86,9 +89,24 @@ function M.setup(user_options)
         return tabline(M.options)
     end
 
-    vim.o.showtabline = 2
-    vim.o.tabline = '%!v:lua.nvim_tabline()'
+    -- autocmd
+    local function _callback()
+        local total = fn.tabpagenr('$')
+        if M.options.hide_if_only_tab and total == 1 then
+            vim.o.showtabline = 0
+        else
+            vim.o.showtabline = 2
+        end
+    end
 
+    local group = a.nvim_create_augroup('nvim-tabline', { clear = true })
+    a.nvim_create_autocmd({ 'TabEnter', 'TabClosed' }, {
+        group = group,
+        pattern = { '*' },
+        callback = _callback,
+    })
+
+    vim.o.tabline = '%!v:lua.nvim_tabline()'
     vim.g.loaded_nvim_tabline = 1
 end
 
