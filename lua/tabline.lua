@@ -47,15 +47,17 @@ local function tabline(options)
         else
             s = s .. options.no_name
         end
-        s = s .. options.brackets[2] .. ' '
+        s = s .. options.brackets[2]
         -- modify indicator
         if
             bufmodified == 1
             and options.show_modify
             and options.modify_indicator ~= nil
         then
-            s = s .. options.modify_indicator .. ' '
+            s = s .. options.modify_indicator
         end
+	-- additional space at the end of each tab segment
+        s = s .. ' '
     end
 
     s = s .. '%#TabLineFill#'
