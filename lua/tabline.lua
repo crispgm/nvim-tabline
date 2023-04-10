@@ -56,7 +56,7 @@ local function tabline(options)
         then
             s = s .. options.modify_indicator
         end
-	-- additional space at the end of each tab segment
+	    -- additional space at the end of each tab segment
         s = s .. ' '
     end
 
