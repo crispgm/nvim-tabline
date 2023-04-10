@@ -10,7 +10,7 @@ M.options = {
     show_icon = false,
     brackets = { '[', ']' },
     no_name = 'No Name',
-    modify_indicator = '[+]',
+    modify_indicator = ' [+]',
 }
 
 local function tabline(options)
