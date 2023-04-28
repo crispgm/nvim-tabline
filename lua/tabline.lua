@@ -11,7 +11,7 @@ M.options = {
     brackets = { '[', ']' },
     no_name = 'No Name',
     modify_indicator = ' [+]',
-    inactive_tab_max_length = 10
+    inactive_tab_max_length = 0
 }
 
 local function tabline(options)
