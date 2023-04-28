@@ -11,6 +11,7 @@ M.options = {
     brackets = { '[', ']' },
     no_name = 'No Name',
     modify_indicator = ' [+]',
+    inactive_tab_max_length = 10
 }
 
 local function tabline(options)
@@ -42,10 +43,17 @@ local function tabline(options)
         end
         -- buf name
         s = s .. options.brackets[1]
+        local pre_title_s_len = string.len(s)
         if bufname ~= '' then
             s = s .. icon .. fn.fnamemodify(bufname, ':t')
         else
             s = s .. options.no_name
+        end
+        if options.inactive_tab_max_length
+            and options.inactive_tab_max_length ~= 0
+            and index ~= fn.tabpagenr()
+        then
+            s = string.sub(s, 1, pre_title_s_len + options.inactive_tab_max_length)
         end
         s = s .. options.brackets[2]
         -- modify indicator

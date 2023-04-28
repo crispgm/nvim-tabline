@@ -33,6 +33,7 @@ require('tabline').setup({
     modify_indicator = '[+]', -- modify indicator
     no_name = 'No name',      -- no name buffer name
     brackets = { '[', ']' },  -- file name brackets surrounding
+    inactive_tab_max_len = 10 -- max length of inactive tab titles, 0 to ignore
 })
 ```
 
