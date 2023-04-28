@@ -50,7 +50,7 @@ local function tabline(options)
             s = s .. options.no_name
         end
         if options.inactive_tab_max_length
-            and options.inactive_tab_max_length ~= 0
+            and options.inactive_tab_max_length > 0
             and index ~= fn.tabpagenr()
         then
             s = string.sub(s, 1, pre_title_s_len + options.inactive_tab_max_length)
