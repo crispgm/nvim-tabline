@@ -27,13 +27,13 @@ require('tabline').setup({opts})
 
 ```lua
 require('tabline').setup({
-    show_index = true,        -- show tab index
-    show_modify = true,       -- show buffer modification indicator
-    show_icon = false,        -- show file extension icon
-    modify_indicator = '[+]', -- modify indicator
-    no_name = 'No name',      -- no name buffer name
-    brackets = { '[', ']' },  -- file name brackets surrounding
-    inactive_tab_max_len = 0  -- max length of inactive tab titles, 0 to ignore
+    show_index = true,           -- show tab index
+    show_modify = true,          -- show buffer modification indicator
+    show_icon = false,           -- show file extension icon
+    modify_indicator = '[+]',    -- modify indicator
+    no_name = 'No name',         -- no name buffer name
+    brackets = { '[', ']' },     -- file name brackets surrounding
+    inactive_tab_max_length = 0  -- max length of inactive tab titles, 0 to ignore
 })
 ```
 
