@@ -86,7 +86,6 @@ function M.setup(user_options)
         return tabline(M.options)
     end
 
-    vim.o.showtabline = 2
     vim.o.tabline = '%!v:lua.nvim_tabline()'
 
     vim.g.loaded_nvim_tabline = 1
