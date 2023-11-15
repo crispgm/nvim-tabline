@@ -38,6 +38,19 @@ require('tabline').setup({
 })
 ```
 
+### Show Tabline
+
+```lua
+" Only if there are at least two tabs (default)
+vim.opt.showtabline = 1
+
+" Always
+vim.opt.showtabline = 2
+
+" Never
+vim.opt.showtabline = 0
+```
+
 ### Mappings
 
 Vim's tabpage commands are powerful enough, `:help tabpage` for details.
