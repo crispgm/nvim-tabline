@@ -46,7 +46,11 @@ local function tabline(options)
         s = s .. options.brackets[1]
         local pre_title_s_len = string.len(s)
         if bufname ~= '' then
-            s = s .. icon .. fn.fnamemodify(bufname, options.fnamemodify)
+            if type(options.fnamemodify) == 'function' then
+                s = s .. icon .. options.fnamemodify(bufname)
+            else
+                s = s .. icon .. fn.fnamemodify(bufname, options.fnamemodify)
+            end
         else
             s = s .. options.no_name
         end
