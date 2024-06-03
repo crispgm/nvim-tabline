@@ -1,5 +1,9 @@
 # nvim-tabline
 
+<a href="https://dotfyle.com/plugins/crispgm/nvim-tabline">
+	<img src="https://dotfyle.com/plugins/crispgm/nvim-tabline/shield?style=flat" />
+</a>
+
 A minimal Tabline plugin for Neovim, written in Lua.
 It is basically a drop-in replacement for [tabline.vim](https://github.com/mkitt/tabline.vim) but with [a few differences](#Differences).
 
